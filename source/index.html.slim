@@ -1,0 +1,13 @@
+---
+top_page?: true
+---
+
+.container
+  h1 = data.common.title
+
+  section
+    h2 課題リスト
+
+    ul
+      - data.problems.each do |p|
+        li = link_to "#{p.title}: #{p.name}", "/problems/#{p.id}.html"

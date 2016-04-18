@@ -1,0 +1,26 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  ruby:
+    version: 2.3.0
+  node:
+    version: 5.1.0
+
+dependencies:
+  override:
+    - npm install
+    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+
+test:
+  override:
+    - 'true'
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - rm -rf build frontend-dist
+      - git clone --depth 1 --branch gh-pages git@github.com:speee-dev/programming-workshop.git build
+      - git config user.email "ciecleci@speee.jp"
+      - git config user.name "Auto Deployment from CircleCI"
+      - ./bin/middleman deploy

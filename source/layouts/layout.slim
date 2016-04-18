@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    meta[content="IE=edge" http-equiv="X-UA-Compatible"]
+    meta[charset="utf-8"]
+    meta[content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"]
+    title
+      - if current_page.data.top_page?
+        = data.common.title
+      - elsif current_page.data.problem_page?
+        = "#{data.common.title} | #{show_problem}"
+      - else
+        = "#{data.common.title} | #{current_page.data.title}"
+    = stylesheet_link_tag :site
+  body
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to 'ディレクター向け勉強会', '/index.html', class: 'navbar-brand'
+        #navbar-collapse.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            / li
+            /   = link_to '開催履歴', '/histories.html'
+
+    = yield
+
+    = javascript_include_tag :application
