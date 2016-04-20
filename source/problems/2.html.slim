@@ -1,0 +1,47 @@
+---
+layout: problem
+problem_page?: true
+problem_id: 2
+---
+
+h3 要件
+
+.well
+  ul
+    li ユーザに、数字を入力させる
+    li
+      | 1からその入力した数字までで、
+      = link_to 'FizzBuzz', '/problems/1.html'
+      | をやる
+
+h3 出力例
+
+pre.well
+  | $ ruby problem2.rb
+    どこまで？: 5
+    1
+    2
+    Fizz
+    4
+    Buzz
+
+    $ ruby problem2.rb
+    どこまで？: 3
+    1
+    2
+    Fizz
+
+h3 工夫してみよう
+
+.well
+  ul
+    li 数字以外のものや、負の数が入力されたら、エラーメッセージを表示する
+
+pre.well
+  | $ ruby problem2.rb
+    どこまで？: aaa
+    数字を入力してください
+
+    $ ruby problem2.rb
+    どこまで？: -1
+    1以上の値を入力してください

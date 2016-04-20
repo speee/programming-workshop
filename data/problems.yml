@@ -1,3 +1,6 @@
 - id: 1
   title: 第1問
   name: FizzBuzz
+- id: 2
+  title: 第2問
+  name: FizzBuzz - どこまで？
