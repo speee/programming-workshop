@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <title>ディレクター向けプログラミング勉強会 | 第3問: じゃんけん</title><link href="/programming-workshop/stylesheets/site.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/programming-workshop/">ディレクター向け勉強会</a>
+        </div>
+        <div id="navbar-collapse" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav"></ul>
+        </div>
+      </div>
+    </nav><div class="container">
+  <h1>
+    ディレクター向け勉強会 | 課題
+  </h1>
+  <h2>
+    第3問: じゃんけん
+  </h2><h3>
+  要件
+</h3>
+<div class="well">
+  <ul>
+    <li>
+      ユーザに、「手」を数字(1:グー、2:チョキ、3:パー)で入力させる
+    </li>
+    <li>
+      ランダムに、CPUの「手」を決める
+    </li>
+    <li>
+      結果を表示
+    </li>
+    <li>
+      あいこだったら、勝敗がつくまで繰り返す
+    </li>
+  </ul>
+</div>
+<h3>
+  出力例
+</h3>
+<pre class="well">$ ruby problem3.rb
+じゃんけんー(1:グー、2:チョキ、3:パー): 1
+あなた: グー
+あいて: グー
+結果: あいこ
+
+あいこでー(1:グー、2:チョキ、3:パー): 2
+あなた: チョキ
+あいて: パー
+結果: 勝ち
+
+$ ruby problem3.rb
+じゃんけんー(1:グー、2:チョキ、3:パー): 1
+あなた: グー
+あいて: パー
+結果: 負け</pre>
+<h3>
+  工夫してみよう
+</h3>
+<div class="well">
+  <ul>
+    <li>
+      勝敗がついても終了せずに、次のじゃんけんが始まるようにする
+    </li>
+    <li>
+      勝敗数をカウントし、勝敗がつくたびに表示する
+    </li>
+  </ul>
+</div>
+<pre class="well">$ ruby problem3.rb
+じゃんけんー(1:グー、2:チョキ、3:パー): 1
+あなた: チョキ
+あいて: パー
+結果: 勝ち（1勝0敗）
+
+じゃんけんー(1:グー、2:チョキ、3:パー): 1
+あなた: グー
+あいて: パー
+結果: 負け（1勝1敗）</pre>
+</div><script src="/programming-workshop/javascripts/application.js"></script>
+  </body>
+</html>
