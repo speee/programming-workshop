@@ -5,12 +5,16 @@ html
     meta[charset="utf-8"]
     meta[content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"]
     title
-      - if current_page.data.top_page?
-        = data.common.title
-      - elsif current_page.data.problem_page?
-        = "#{data.common.title} | #{show_problem}"
+      - if current_page.data.title
+        = current_page.data.title
+      - elsif current_page.data.subtitle
+        = "#{data.common.title} | #{current_page.data.subtitle}"
+      - elsif @title
+        = @title
+      - elsif @subtitle
+        = "#{data.common.title} | #{@subtitle}"
       - else
-        = "#{data.common.title} | #{current_page.data.title}"
+        = data.common.title
     = stylesheet_link_tag :site
   body
     nav.navbar.navbar-inverse.navbar-fixed-top
@@ -24,8 +28,9 @@ html
           = link_to 'ディレクター向け勉強会', '/index.html', class: 'navbar-brand'
         #navbar-collapse.collapse.navbar-collapse
           ul.nav.navbar-nav
-            / li
-            /   = link_to '開催履歴', '/histories.html'
+            - data.nav_menu.each do |m|
+              li
+                = link_to m.name, m.link
 
     = yield
 
