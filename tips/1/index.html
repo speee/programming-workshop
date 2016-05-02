@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <title>ディレクター向けプログラミング勉強会 | ループについて</title><link href="/programming-workshop/stylesheets/site.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/programming-workshop/">ディレクター向け勉強会</a>
+        </div>
+        <div id="navbar-collapse" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="/programming-workshop/">Top</a>
+            </li>
+            <li>
+              <a href="/programming-workshop/tips/">Tips</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav><div class="container">
+  <h1>
+    ディレクター向け勉強会 | Tips
+  </h1>
+  <h2>
+    ループについて
+  </h2><h3>
+  whileループ
+</h3>
+<p>
+  whileループは最も基本的なループ記法です。
+</p>
+<pre class="well">while <ループを継続するかどうか>
+  <繰り返す処理>
+end</pre>
+<p>
+  例えば、1から100まで表示するループは以下のようになります。
+</p>
+<pre class="well">i = 1
+while i <= 100
+  puts i
+  i += 1
+end</pre>
+<p>
+  また、whileループは、breakを使って抜けることができます。「無限ループを作っておいてから、特定の条件に合致する場合だけbreakする」といった書き方をよくやります。
+</p>
+<pre class="well">while true # ループ継続条件が常に「true」なので無限ループになる
+  <繰り返す処理>
+
+  print '終了しますか？(y/n): '
+  break if gets.start_with?('y') # ユーザが「y」を入力したらループを抜ける
+end</pre>
+<h3>
+  コレクションeach
+</h3>
+<p>
+  前述の「1から100まで表示するループ」のコードは、以下のように、もっと簡単なコードで実現することができます。
+</p>
+<pre class="well">(1..100).each do |i|
+  puts i
+end</pre>
+<p>
+  この書き方は「ループ」という考え方とは別のアプローチになります。
+</p>
+<p>
+  まずは「コレクション」という概念を導入します。コレクションとは、データの集まりのことです。例えば配列は、コレクションの種類の1つになります。
+</p>
+<p>
+  今回は「Range」という種類のコレクションを使っています。Rangeはその名の通り「範囲」を表すコレクションです。「1..100」 の部分がRangeを作成しているコードで、「1から100までの数値」という範囲を表します。
+</p>
+<pre class="well"><開始値>..<終端値></pre>
+<p>
+  次に、コレクションを使った処理についてです。コレクションには、データの追加や削除などの様々な処理が考えられますが、今回は「走査」という処理を使います。「走査」は、コレクションの中身のデータを1つずつ読み込みながら、そのデータに対して順番に何らかの処理を行うことです。
+</p>
+<pre class="well"><コレクション>.each do |<変数名>|
+  <上の行で指定した変数にデータが1つずつ読み込まれるので、その値を用いて繰り返し行う処理>
+end</pre>
+<h3>
+  whileとeachの使い分け
+</h3>
+<p>
+  一般的には、それぞれ以下の様な特徴があります
+</p>
+<ul>
+  <li>
+    eachで書いた方が読みやすいコードで書ける
+  </li>
+  <li>
+    whileはより柔軟な処理を書ける
+  </li>
+</ul>
+<p>
+  最初は強くこだわる必要はありませんが、慣れてきたら「eachで書ける場合はeachで」という感覚で選ぶとよいでしょう。
+</p>
+<h3>
+  より広く、深く知る
+</h3>
+<p>
+  <a href="http://docs.ruby-lang.org/ja/2.3.0/doc/index.html" target="_blank">公式ドキュメント</a>に、より詳細な説明や、このページでは省略した内容も載っていますので、興味があれば読んでみてください。
+</p>
+<ul>
+  <li>
+    <a href="http://docs.ruby-lang.org/ja/2.3.0/doc/spec=2fcontrol.html" target="_blank">ループや、それ以外の文について</a>
+  </li>
+  <li>
+    <a href="http://docs.ruby-lang.org/ja/2.3.0/class/Enumerable.html" target="_blank">本文で「コレクション」読んだものの定義</a>
+  </li>
+  <li>
+    <a href="http://docs.ruby-lang.org/ja/2.3.0/class/Range.html" target="_blank">Rangeについて</a>
+  </li>
+</ul>
+</div><script src="/programming-workshop/javascripts/application.js"></script>
+  </body>
+</html>
