@@ -1,0 +1,13 @@
+---
+title: Tips
+---
+
+.container
+  h1 ディレクター向け勉強会 | Tips
+
+  section
+    h2 Tips
+
+    ul
+      - data.tips.each do |t|
+        li = link_to t.title, "/tips/#{t.id}.html"

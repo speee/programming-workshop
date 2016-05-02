@@ -9,6 +9,8 @@ html
         = data.common.title
       - elsif current_page.data.problem_page?
         = "#{data.common.title} | #{show_problem}"
+      - elsif current_page.data.tip_page?
+        = "#{data.common.title} | #{tip.title}"
       - else
         = "#{data.common.title} | #{current_page.data.title}"
     = stylesheet_link_tag :site
@@ -24,8 +26,10 @@ html
           = link_to 'ディレクター向け勉強会', '/index.html', class: 'navbar-brand'
         #navbar-collapse.collapse.navbar-collapse
           ul.nav.navbar-nav
-            / li
-            /   = link_to '開催履歴', '/histories.html'
+            li
+              = link_to 'Top', '/index.html'
+            li
+              = link_to 'Tops', '/tips.html'
 
     = yield
 
