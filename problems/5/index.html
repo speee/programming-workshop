@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <title>ディレクター向けプログラミング勉強会 | 第5問: TODOリスト（その2）</title><link href="/programming-workshop/stylesheets/site.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/programming-workshop/">ディレクター向け勉強会</a>
+        </div>
+        <div id="navbar-collapse" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="/programming-workshop/">Top</a>
+            </li>
+            <li>
+              <a href="/programming-workshop/tips/">Tips</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav><div class="container">
+  <h1>
+    ディレクター向け勉強会 | 課題
+  </h1>
+  <h2>
+    第5問: TODOリスト（その2）
+  </h2><h3>
+  要件
+</h3>
+<div class="well">
+  <ol>
+    <li>
+      <a href="/programming-workshop/problems/4/">第4問で作成したTODO</a>に機能を追加
+    </li>
+    <li>
+      第4問では個々のTODOはただの文字列だったが、他の属性も入力できるようにする
+    </li>
+    <li>
+      追加する属性は好きに決めて良い（複数でも可）
+    </li>
+    <ul>
+      <li>
+        ラベル
+      </li>
+      <li>
+        期限
+      </li>
+      <li>
+        担当者
+      </li>
+      <li>
+        などなど
+      </li>
+    </ul>
+    <li>
+      個々のTODOはハッシュで表現する
+    </li>
+  </ol>
+</div>
+<h3>
+  「ハッシュで表現する」とは
+</h3>
+<p>
+  第4問のときには「文字列」としてTODOを表現（=プログラム内でどのような形のデータとして保持するか）していた。この方式では単一の値しか保持できないので、今回のように複数の属性を保持したいときに困ってします。
+</p>
+<p>
+  そこで、個々のTODOを「ハッシュ」で保持する。
+</p>
+<p>
+  ハッシュでデータを保持する際には、具体的に保持する属性の種類と名前を先に設計する。例えば、
+</p>
+<ul>
+  <li>
+    title: TODOのタイトル
+  </li>
+  <li>
+    label: ラベル
+  </li>
+</ul>
+<p>
+  とする。このとき、プログラム内では、例えば、
+</p>
+<pre class="well">todo = {
+  title: '日報作成',
+  label: 'daily'
+}</pre>
+<p>
+  のように表現する。
+</p>
+<h3>
+  出力例
+</h3>
+<p>
+  <img src="/programming-workshop/images/problems/5/01.png" />
+</p>
+<p>
+  ※ 白文字がプログラムが出力したもの、黃文字がユーザが入力したものです。
+</p>
+</div><script src="/programming-workshop/javascripts/application.js"></script>
+  </body>
+</html>
