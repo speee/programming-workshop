@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <title>ディレクター向けプログラミング勉強会 | 第6問: TODOリスト（その3）</title><link href="/programming-workshop/stylesheets/site.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/programming-workshop/">ディレクター向け勉強会</a>
+        </div>
+        <div id="navbar-collapse" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="/programming-workshop/">Top</a>
+            </li>
+            <li>
+              <a href="/programming-workshop/tips/">Tips</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav><div class="container">
+  <h1>
+    ディレクター向け勉強会 | 課題
+  </h1>
+  <h2>
+    第6問: TODOリスト（その3）
+  </h2><h3>
+  要件
+</h3>
+<div class="well">
+  <ol>
+    <li>
+      <a href="/programming-workshop/problems/5/">第5問で作成したTODO</a>と、機能は全く同じでOK
+    </li>
+    <li>
+      第5問では個々のTODOをハッシュで表現していたが、ここではクラスで表現する
+    </li>
+  </ol>
+</div>
+<h3>
+  「ハッシュで表現する」ことの問題点
+</h3>
+<p>
+  ハッシュは key <-> value 形式でデータの集まりを表現したものです。どんな属性のデータか決まっていない場合には便利なのですが、今回のように、例えば「TODOの属性は必ずTitleとLabel」というように、必要な属性が決まっている場合には、自由度が高すぎてバグを生みやすいという欠点があります。
+</p>
+<pre class="well">todo = {
+  title: '日報作成',
+  label: 'daily'
+}
+
+puts "[#{todo[:labal]}] #{todo[:title]}" # タイプミス
+
+# 出力（ラベルが表示されない）↓
+
+[] 日報作成</pre>
+<h3>
+  ハッシュの代わりにクラスを作る
+</h3>
+<p>
+  このような場合には、ハッシュではなくクラスを作りましょう。
+</p>
+<pre class="well">class Todo
+  attr_accessor :title, :label
+
+  def initialize(title, label)
+    self.title = title
+    self.label = label
+  end
+end</pre>
+<p>
+  クラスの場合は、「属性を取得するメソッド」が作られます（詳しくは「attr_accessor」について調べてみましょう）。存在しないメソッドを呼びだそうとすると、エラーになるため、すぐにわかります。
+</p>
+<pre class="well">puts "[#{todo.labal}] #{todo.title}"
+
+# 出力（labalというメソッドがないことと、「もしかして？」が表示される）↓
+
+NoMethodError: undefined method `labal' for #<Todo:0x007fa6f3512ab0 @title="日報作成", @label="daily">
+Did you mean?  label
+               label=</pre>
+<p>
+  また、クラスであれば、ただのデータの入れ物として使うのではなく、Todoというオブジェクトが行える操作をメソッドとして定義することができます。
+</p>
+<pre class="well">class Todo
+
+  attr_accessor :title, :label
+
+  # 省略
+
+  def show
+    puts "[#{label}] #{title}"
+  end
+end
+
+# 使う↓
+
+todo = Todo.new('日報作成', 'daily')
+todo.show
+
+# 出力↓
+
+[daily] 日報作成</pre>
+</div><script src="/programming-workshop/javascripts/application.js"></script>
+  </body>
+</html>
