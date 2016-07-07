@@ -1,0 +1,86 @@
+---
+layout: problem
+problem_id: 6
+---
+
+h3 要件
+
+.well
+  ol
+    li
+      = link_to '第5問で作成したTODO', '/problems/5.html'
+      | と、機能は全く同じでOK
+    li 第5問では個々のTODOをハッシュで表現していたが、ここではクラスで表現する
+
+h3 「ハッシュで表現する」ことの問題点
+
+p
+  | ハッシュは key <-> value 形式でデータの集まりを表現したものです。
+  | どんな属性のデータか決まっていない場合には便利なのですが、
+  | 今回のように、例えば「TODOの属性は必ずTitleとLabel」というように、
+  | 必要な属性が決まっている場合には、自由度が高すぎてバグを生みやすいという欠点があります。
+
+pre.well
+  | todo = {
+      title: '日報作成',
+      label: 'daily'
+    }
+
+    puts "[\#{todo[:labal]}] \#{todo[:title]}" # タイプミス
+
+    # 出力（ラベルが表示されない）↓
+
+    [] 日報作成
+
+h3 ハッシュの代わりにクラスを作る
+
+p
+  | このような場合には、ハッシュではなくクラスを作りましょう。
+
+pre.well
+  | class Todo
+      attr_accessor :title, :label
+
+      def initialize(title, label)
+        self.title = title
+        self.label = label
+      end
+    end
+
+p
+  | クラスの場合は、「属性を取得するメソッド」が作られます（詳しくは「attr_accessor」について調べてみましょう）。
+  | 存在しないメソッドを呼びだそうとすると、エラーになるため、すぐにわかります。
+
+pre.well
+  | puts "[\#{todo.labal}] \#{todo.title}"
+
+    # 出力（labalというメソッドがないことと、「もしかして？」が表示される）↓
+
+    NoMethodError: undefined method `labal' for #<Todo:0x007fa6f3512ab0 @title="日報作成", @label="daily">
+    Did you mean?  label
+                   label=
+
+p
+  | また、クラスであれば、ただのデータの入れ物として使うのではなく、
+  | Todoというオブジェクトが行える操作をメソッドとして定義することができます。
+
+pre.well
+  | class Todo
+
+      attr_accessor :title, :label
+
+      # 省略
+
+      def show
+        puts "[\#{label}] \#{title}"
+      end
+    end
+
+    # 使う↓
+
+    todo = Todo.new('日報作成', 'daily')
+    todo.show
+
+    # 出力↓
+
+    [daily] 日報作成
