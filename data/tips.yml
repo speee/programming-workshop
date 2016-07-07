@@ -1,2 +1,4 @@
 - id: 1
   title: ループについて
+- id: 2
+  title: 文字コードとWindowsでの日本語の扱い
